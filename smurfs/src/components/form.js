@@ -6,14 +6,38 @@ const Form = (props) => {
         <div>
             <h2>ADD A SMURF!!!</h2>
             <form>
-                <label> Name: </label>
-                <input placeholder="name" />
+                <label htmlFor="name"> Name: </label>
+                <input
+                    placeholder="name"
+                    id='name'
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                // onChange={}
+                // value={}
+                />
 
-                <label> Age: </label>
-                <input placeholder="age" />
+                <label htmlFor="age"> Age: </label>
+                <input
+                    placeholder="age"
+                    id='age'
+                    type="text"
+                    placeholder="Age"
+                    name="age"
+                // onChange={}
+                // value={}
+                />
 
-                <label> Height: </label>
-                <input placeholder="height" />
+                <label htmlFor="height"> Height: </label>
+                <input
+                    placeholder="height"
+                    id='height'
+                    type="text"
+                    placeholder="Height"
+                    name="height"
+                // onChange={}
+                // value={}
+                />
                 <br />
                 <button type="submit">Add Smurf</button>
             </form>
