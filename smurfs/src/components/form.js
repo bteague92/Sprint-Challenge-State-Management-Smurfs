@@ -1,11 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { connect } from "react-redux";
 
-const Form = (props) => {
+const Form = () => {
+    const [smurf, setSmurf] = useState({
+        name: '',
+        age: '',
+        height: '',
+        id: ''
+    });
+
+    const handleChange = event => {
+        setSmurf({
+            ...smurf,
+            [event.target.name]: event.target.value
+        });
+    };
+
+    const submitForm = e => {
+        e.preventDefault();
+        axios
+            .post("http://localhost:3333/smurfs", smurf)
+
+            .then(res => {
+                console.log("is posting");
+                setSmurf({
+                    ...smurf,
+                    name: '',
+                    age: '',
+                    height: '',
+                    id: Date.now()
+                });
+            })
+            .catch(err => console.log("it did not work", err));
+    };
+
+
     return (
         <div>
             <h2>ADD A SMURF!!!</h2>
-            <form>
+            <form onSubmit={submitForm}>
                 <label htmlFor="name"> Name: </label>
                 <input
                     placeholder="name"
@@ -13,8 +47,8 @@ const Form = (props) => {
                     type="text"
                     placeholder="Name"
                     name="name"
-                // onChange={}
-                // value={}
+                    onChange={handleChange}
+                    value={smurf.name}
                 />
 
                 <label htmlFor="age"> Age: </label>
@@ -24,8 +58,8 @@ const Form = (props) => {
                     type="text"
                     placeholder="Age"
                     name="age"
-                // onChange={}
-                // value={}
+                    onChange={handleChange}
+                    value={smurf.age}
                 />
 
                 <label htmlFor="height"> Height: </label>
@@ -35,8 +69,8 @@ const Form = (props) => {
                     type="text"
                     placeholder="Height"
                     name="height"
-                // onChange={}
-                // value={}
+                    onChange={handleChange}
+                    value={smurf.height}
                 />
                 <br />
                 <button type="submit">Add Smurf</button>

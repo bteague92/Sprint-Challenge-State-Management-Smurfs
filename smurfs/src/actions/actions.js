@@ -2,7 +2,6 @@ import axios from "axios";
 export const SMURF_LOADING = "SMURF_LOADING";
 export const SMURF_SUCCESS = "SMURF_SUCCESS";
 export const SMURF_FAILED = "SMURF_FAILED";
-export const ADD_SMURF = "ADD_SMURF";
 
 
 export const smurfLoading = () => ({ type: SMURF_LOADING });
@@ -16,11 +15,6 @@ export const smurfFailure = error => ({
     type: SMURF_FAILED,
     payload: error
 });
-
-export const addSmurf = (data) => ({
-    type: ADD_SMURF,
-    payload: data
-})
 
 export function getSmurfs() { ///Launches the attempt to API pull
 

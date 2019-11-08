@@ -7,7 +7,7 @@ const List = (props) => {
         <div>
             <button onClick={() => props.dispatch(getSmurfs())}>LoadSmurfs</button>
             <br />
-            <h1>List</h1>
+            <h1>Smurf Village Members ({props.smurfs.length})</h1>
             <ul>
                 {props.smurfs.map((i) => {
                     return <li>Name: {i.name}, Age: {i.age}, Height: {i.height}</li>
